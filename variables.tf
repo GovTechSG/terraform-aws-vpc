@@ -48,3 +48,11 @@ variable "ephemeral_to" {
   description = "Lower end of the port range for ephemeral traffic"
   default     = 65535
 }
+
+variable "tags" {
+  description = "A map of tags to add to all resources"
+
+  default = {
+    Terraform = "true"
+  }
+}

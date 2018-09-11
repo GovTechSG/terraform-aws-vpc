@@ -23,6 +23,7 @@ In particular, it does the following:
 | intra_subnets | List of CIDRs for intra subnets | string | `<list>` | no |
 | private_subnets | List of CIDRs for private subnets | string | `<list>` | no |
 | public_subnets | List of CIDRs for public subnets | string | `<list>` | no |
+| tags | A map of tags to add to all resources | string | `<map>` | no |
 | vpc_cidr | CIDR for the VPC | string | - | yes |
 | vpc_name | Name of the VPC | string | - | yes |
 
