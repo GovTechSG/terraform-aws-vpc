@@ -1,5 +1,9 @@
 data "aws_availability_zones" "available" {}
 
+data "aws_region" "current" {
+  current = true
+}
+
 resource "aws_eip" "nat" {
   count = "${var.eip_count}"
 
