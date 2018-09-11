@@ -31,7 +31,7 @@ variable "intra_subnets" {
 
 variable "eip_count" {
   description = "Number of EIP for the gateways. This should be eqaual to the number of AZs if you have any private subnets"
-  default     = 0
+  default     = 3
 }
 
 variable "additional_allowed_cidr_blocks" {
