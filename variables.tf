@@ -49,6 +49,16 @@ variable "ephemeral_to" {
   default     = 65535
 }
 
+variable "enable_s3_endpoint" {
+  description = "Should be true if you want to provision an S3 endpoint to the VPC"
+  default     = false
+}
+
+variable "enable_dynamodb_endpoint" {
+  description = "Should be true if you want to provision a DynamoDB endpoint to the VPC"
+  default     = false
+}
+
 variable "tags" {
   description = "A map of tags to add to all resources"
 

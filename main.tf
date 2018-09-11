@@ -26,9 +26,9 @@ module "vpc" {
   intra_subnets = ["${var.intra_subnets}"]
 
   # One gateway per AZ: https://github.com/terraform-aws-modules/terraform-aws-vpc#nat-gateway-scenarios
-  enable_nat_gateway     = true
+  enable_nat_gateway     = "${var.eip_count > 0 ? "true" : "false"}"
   single_nat_gateway     = false
-  one_nat_gateway_per_az = true
+  one_nat_gateway_per_az = "${var.eip_count > 0 ? "true" : "false"}"
 
   reuse_nat_ips       = true
   external_nat_ip_ids = ["${aws_eip.nat.*.id}"]
@@ -36,8 +36,8 @@ module "vpc" {
   enable_vpn_gateway   = false
   enable_dns_hostnames = true
 
-  enable_s3_endpoint       = true
-  enable_dynamodb_endpoint = true
+  enable_s3_endpoint       = "${var.eip_count > 0 ? var.enable_s3_endpoint: "false"}"
+  enable_dynamodb_endpoint = "${var.eip_count > 0 ? var.enable_dynamodb_endpoint: "false"}"
 
   tags = "${var.tags}"
 }
