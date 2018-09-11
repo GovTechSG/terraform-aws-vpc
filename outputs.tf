@@ -77,3 +77,23 @@ output "vpc_nat_eip_ids" {
   description = "EIP for the NAT gateway in the VPC"
   value       = ["${aws_eip.nat.*.id}"]
 }
+
+output "public_acl_id" {
+  description = "ACL ID of the public subnets"
+  value       = "${aws_network_acl.public.id}"
+}
+
+output "private_acl_id" {
+  description = "ACL ID of the private subnets"
+  value       = "${aws_network_acl.private.id}"
+}
+
+output "database_acl_id" {
+  description = "ACL ID of the database subnets"
+  value       = "${aws_network_acl.database.id}"
+}
+
+output "intra_acl_id" {
+  description = "ACL ID of the intra subnets"
+  value       = "${aws_network_acl.intra.id}"
+}
