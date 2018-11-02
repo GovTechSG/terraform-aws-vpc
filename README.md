@@ -31,8 +31,12 @@ In particular, it does the following:
 
 | Name | Description |
 |------|-------------|
+| database_acl_id | ACL ID of the database subnets |
+| intra_acl_id | ACL ID of the intra subnets |
 | intra_subnets_cidr_blocks | List of cidr_blocks of intra subnets |
+| private_acl_id | ACL ID of the private subnets |
 | private_subnets_cidr_blocks | List of cidr_blocks of private subnets |
+| public_acl_id | ACL ID of the public subnets |
 | public_subnets_cidr_blocks | List of cidr_blocks of public subnets |
 | vpc_azs | The AZs in the region the VPC belongs to |
 | vpc_cidr_block | The CIDR block of the VPC |
@@ -42,6 +46,7 @@ In particular, it does the following:
 | vpc_id | The ID of the VPC |
 | vpc_intra_subnets | 'Intra' subnets for the VPC |
 | vpc_nat_eip_ids | EIP for the NAT gateway in the VPC |
+| vpc_nat_eip_public | Public address for the EIP on the NAT Gateway |
 | vpc_private_route_table_ids | List of IDs of private route tables |
 | vpc_private_subnets | Private subnets for the VPC |
 | vpc_public_route_table_ids | The IDs of the public route tables |
