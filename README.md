@@ -17,12 +17,15 @@ In particular, it does the following:
 |------|-------------|:----:|:-----:|:-----:|
 | additional_allowed_cidr_blocks | Additional 'safe' CIDR blocks for internal traffic | string | `<list>` | no |
 | database_subnets | List of CIDRs for database subnets | string | `<list>` | no |
-| eip_count | Number of EIP for the gateways. This should be eqaual to the number of AZs if you have any private subnets | string | `0` | no |
+| eip_count | Number of EIP for the gateways. This should be eqaual to the number of AZs if you have any private subnets | string | `3` | no |
+| enable_dynamodb_endpoint | Should be true if you want to provision a DynamoDB endpoint to the VPC | string | `false` | no |
+| enable_s3_endpoint | Should be true if you want to provision an S3 endpoint to the VPC | string | `false` | no |
 | ephemeral_from | Lower end of the port range for ephemeral traffic | string | `1024` | no |
 | ephemeral_to | Lower end of the port range for ephemeral traffic | string | `65535` | no |
 | intra_subnets | List of CIDRs for intra subnets | string | `<list>` | no |
 | private_subnets | List of CIDRs for private subnets | string | `<list>` | no |
 | public_subnets | List of CIDRs for public subnets | string | `<list>` | no |
+| redshift_subnets | Lsit of CIDRs for Redshift subnets | string | `<list>` | no |
 | tags | A map of tags to add to all resources | string | `<map>` | no |
 | vpc_cidr | CIDR for the VPC | string | - | yes |
 | vpc_name | Name of the VPC | string | - | yes |
@@ -38,6 +41,10 @@ In particular, it does the following:
 | private_subnets_cidr_blocks | List of cidr_blocks of private subnets |
 | public_acl_id | ACL ID of the public subnets |
 | public_subnets_cidr_blocks | List of cidr_blocks of public subnets |
+| redshift_route_table_ids | List of IDs of redshift route tables |
+| redshift_subnet_group | ID of redshift subnet group |
+| redshift_subnets | List of IDs of redshift subnets |
+| redshift_subnets_cidr_blocks | List of cidr_blocks of redshift subnets |
 | vpc_azs | The AZs in the region the VPC belongs to |
 | vpc_cidr_block | The CIDR block of the VPC |
 | vpc_database_subnet_group | ID of database subnet group |

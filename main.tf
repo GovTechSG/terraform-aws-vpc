@@ -21,6 +21,7 @@ module "vpc" {
   public_subnets   = ["${var.public_subnets}"]
   private_subnets  = ["${var.private_subnets}"]
   database_subnets = ["${var.database_subnets}"]
+  redshift_subnets = ["${var.redshift_subnets}"]
 
   # Intra subnet with no internet access: https://github.com/terraform-aws-modules/terraform-aws-vpc#private-versus-intra-subnets
   intra_subnets = ["${var.intra_subnets}"]

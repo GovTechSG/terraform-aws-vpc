@@ -29,6 +29,11 @@ variable "intra_subnets" {
   default     = []
 }
 
+variable "redshift_subnets" {
+  description = "Lsit of CIDRs for Redshift subnets"
+  default     = []
+}
+
 variable "eip_count" {
   description = "Number of EIP for the gateways. This should be eqaual to the number of AZs if you have any private subnets"
   default     = 3

@@ -102,3 +102,23 @@ output "intra_acl_id" {
   description = "ACL ID of the intra subnets"
   value       = "${aws_network_acl.intra.id}"
 }
+
+output "redshift_route_table_ids" {
+  description = "List of IDs of redshift route tables"
+  value       = "${module.vpc.redshift_route_table_ids}"
+}
+
+output "redshift_subnet_group" {
+  description = "ID of redshift subnet group"
+  value       = "${module.vpc.redshift_subnet_group}"
+}
+
+output "redshift_subnets" {
+  description = "List of IDs of redshift subnets"
+  value       = "${module.vpc.redshift_subnets}"
+}
+
+output "redshift_subnets_cidr_blocks" {
+  description = "List of cidr_blocks of redshift subnets"
+  value       = "${module.vpc.redshift_subnets_cidr_blocks}"
+}
