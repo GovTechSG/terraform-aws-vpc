@@ -122,3 +122,28 @@ output "redshift_subnets_cidr_blocks" {
   description = "List of cidr_blocks of redshift subnets"
   value       = "${module.vpc.redshift_subnets_cidr_blocks}"
 }
+
+output "elasticache_route_table_ids" {
+  description = "List of IDs of elasticache route tables"
+  value       = "${module.vpc.elasticache_route_table_ids}"
+}
+
+output "elasticache_subnet_group" {
+  description = "ID of elasticache subnet group"
+  value       = "${module.vpc.elasticache_subnet_group}"
+}
+
+output "elasticache_subnet_group_name" {
+  description = "Name of elasticache subnet group"
+  value       = "${module.vpc.elasticache_subnet_group_name}"
+}
+
+output "elasticache_subnets" {
+  description = "List of IDs of elasticache subnets"
+  value       = "${module.vpc.elasticache_subnets}"
+}
+
+output "elasticache_subnets_cidr_blocks" {
+  description = "List of cidr_blocks of elasticache subnets"
+  value       = "${module.vpc.elasticache_subnets_cidr_blocks}"
+}

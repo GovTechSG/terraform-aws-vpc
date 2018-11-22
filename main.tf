@@ -17,11 +17,12 @@ module "vpc" {
   name = "${var.vpc_name}"
   cidr = "${var.vpc_cidr}"
 
-  azs              = ["${data.aws_availability_zones.available.names}"]
-  public_subnets   = ["${var.public_subnets}"]
-  private_subnets  = ["${var.private_subnets}"]
-  database_subnets = ["${var.database_subnets}"]
-  redshift_subnets = ["${var.redshift_subnets}"]
+  azs                 = ["${data.aws_availability_zones.available.names}"]
+  public_subnets      = ["${var.public_subnets}"]
+  private_subnets     = ["${var.private_subnets}"]
+  database_subnets    = ["${var.database_subnets}"]
+  redshift_subnets    = ["${var.redshift_subnets}"]
+  elasticache_subnets = ["${var.elasticache_subnets}"]
 
   # Intra subnet with no internet access: https://github.com/terraform-aws-modules/terraform-aws-vpc#private-versus-intra-subnets
   intra_subnets = ["${var.intra_subnets}"]

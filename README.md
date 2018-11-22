@@ -18,6 +18,7 @@ In particular, it does the following:
 | additional_allowed_cidr_blocks | Additional 'safe' CIDR blocks for internal traffic | string | `<list>` | no |
 | database_subnets | List of CIDRs for database subnets | string | `<list>` | no |
 | eip_count | Number of EIP for the gateways. This should be eqaual to the number of AZs if you have any private subnets | string | `3` | no |
+| elasticache_subnets | Lsit of CIDRs for Elasticache subnets | string | `<list>` | no |
 | enable_dynamodb_endpoint | Should be true if you want to provision a DynamoDB endpoint to the VPC | string | `false` | no |
 | enable_s3_endpoint | Should be true if you want to provision an S3 endpoint to the VPC | string | `false` | no |
 | ephemeral_from | Lower end of the port range for ephemeral traffic | string | `1024` | no |
@@ -35,6 +36,11 @@ In particular, it does the following:
 | Name | Description |
 |------|-------------|
 | database_acl_id | ACL ID of the database subnets |
+| elasticache_route_table_ids | List of IDs of elasticache route tables |
+| elasticache_subnet_group | ID of elasticache subnet group |
+| elasticache_subnet_group_name | Name of elasticache subnet group |
+| elasticache_subnets | List of IDs of elasticache subnets |
+| elasticache_subnets_cidr_blocks | List of cidr_blocks of elasticache subnets |
 | intra_acl_id | ACL ID of the intra subnets |
 | intra_subnets_cidr_blocks | List of cidr_blocks of intra subnets |
 | private_acl_id | ACL ID of the private subnets |

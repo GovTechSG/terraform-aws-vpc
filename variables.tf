@@ -34,6 +34,11 @@ variable "redshift_subnets" {
   default     = []
 }
 
+variable "elasticache_subnets" {
+  description = "Lsit of CIDRs for Elasticache subnets"
+  default     = []
+}
+
 variable "eip_count" {
   description = "Number of EIP for the gateways. This should be eqaual to the number of AZs if you have any private subnets"
   default     = 3
