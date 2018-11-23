@@ -250,3 +250,35 @@ resource "aws_network_acl_rule" "intra_outgoing_internal" {
   rule_action = "allow"
   cidr_block  = "${element(local.internal_cidrs, count.index)}"
 }
+
+###########################################################
+# ACL Rules for "elasticache" submets
+###########################################################
+resource "aws_network_acl" "elasticache" {
+  vpc_id     = "${module.vpc.vpc_id}"
+  subnet_ids = ["${module.vpc.elasticache_subnets}"]
+
+  tags = "${merge(var.tags, map("Name", "${var.vpc_name} ElastiCache ACLs"))}"
+}
+
+resource "aws_network_acl_rule" "elasticache_incoming_internal" {
+  count          = "${length(local.internal_cidrs)}"
+  network_acl_id = "${aws_network_acl.intra.id}"
+
+  rule_number = "${200 + count.index}"
+  egress      = false
+  protocol    = "all"
+  rule_action = "allow"
+  cidr_block  = "${element(local.internal_cidrs, count.index)}"
+}
+
+resource "aws_network_acl_rule" "elasticache_outgoing_internal" {
+  count          = "${length(local.internal_cidrs)}"
+  network_acl_id = "${aws_network_acl.intra.id}"
+
+  rule_number = "${200 + count.index}"
+  egress      = true
+  protocol    = "all"
+  rule_action = "allow"
+  cidr_block  = "${element(local.internal_cidrs, count.index)}"
+}
