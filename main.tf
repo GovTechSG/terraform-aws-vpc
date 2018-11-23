@@ -263,7 +263,7 @@ resource "aws_network_acl" "elasticache" {
 
 resource "aws_network_acl_rule" "elasticache_incoming_internal" {
   count          = "${length(local.internal_cidrs)}"
-  network_acl_id = "${aws_network_acl.intra.id}"
+  network_acl_id = "${aws_network_acl.elasticache.id}"
 
   rule_number = "${200 + count.index}"
   egress      = false
@@ -274,7 +274,39 @@ resource "aws_network_acl_rule" "elasticache_incoming_internal" {
 
 resource "aws_network_acl_rule" "elasticache_outgoing_internal" {
   count          = "${length(local.internal_cidrs)}"
-  network_acl_id = "${aws_network_acl.intra.id}"
+  network_acl_id = "${aws_network_acl.elasticache.id}"
+
+  rule_number = "${200 + count.index}"
+  egress      = true
+  protocol    = "all"
+  rule_action = "allow"
+  cidr_block  = "${element(local.internal_cidrs, count.index)}"
+}
+
+###########################################################
+# ACL Rules for "redshift" submets
+###########################################################
+resource "aws_network_acl" "redshift" {
+  vpc_id     = "${module.vpc.vpc_id}"
+  subnet_ids = ["${module.vpc.redshift_subnets}"]
+
+  tags = "${merge(var.tags, map("Name", "${var.vpc_name} RedShift ACLs"))}"
+}
+
+resource "aws_network_acl_rule" "redshift_incoming_internal" {
+  count          = "${length(local.internal_cidrs)}"
+  network_acl_id = "${aws_network_acl.redshift.id}"
+
+  rule_number = "${200 + count.index}"
+  egress      = false
+  protocol    = "all"
+  rule_action = "allow"
+  cidr_block  = "${element(local.internal_cidrs, count.index)}"
+}
+
+resource "aws_network_acl_rule" "redshift_outgoing_internal" {
+  count          = "${length(local.internal_cidrs)}"
+  network_acl_id = "${aws_network_acl.redshift.id}"
 
   rule_number = "${200 + count.index}"
   egress      = true
