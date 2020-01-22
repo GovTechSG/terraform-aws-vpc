@@ -1,9 +1,11 @@
 variable "vpc_name" {
   description = "Name of the VPC"
+  type        = string
 }
 
 variable "vpc_cidr" {
   description = "CIDR for the VPC"
+  type        = string
 }
 
 ################################################
@@ -11,31 +13,37 @@ variable "vpc_cidr" {
 ################################################
 variable "public_subnets" {
   description = "List of CIDRs for public subnets"
+  type        = list(string)
   default     = []
 }
 
 variable "private_subnets" {
   description = "List of CIDRs for private subnets"
+  type        = list(string)
   default     = []
 }
 
 variable "database_subnets" {
   description = "List of CIDRs for database subnets"
+  type        = list(string)
   default     = []
 }
 
 variable "intra_subnets" {
   description = "List of CIDRs for intra subnets"
+  type        = list(string)
   default     = []
 }
 
 variable "redshift_subnets" {
-  description = "Lsit of CIDRs for Redshift subnets"
+  description = "List of CIDRs for Redshift subnets"
+  type        = list(string)
   default     = []
 }
 
 variable "elasticache_subnets" {
-  description = "Lsit of CIDRs for Elasticache subnets"
+  description = "List of CIDRs for Elasticache subnets"
+  type        = list(string)
   default     = []
 }
 
@@ -46,6 +54,7 @@ variable "eip_count" {
 
 variable "additional_allowed_cidr_blocks" {
   description = "Additional 'safe' CIDR blocks for internal traffic"
+  type        = list(string)
   default     = []
 }
 
@@ -71,6 +80,7 @@ variable "enable_dynamodb_endpoint" {
 
 variable "tags" {
   description = "A map of tags to add to all resources"
+  type        = map(string)
 
   default = {
     Terraform = "true"
